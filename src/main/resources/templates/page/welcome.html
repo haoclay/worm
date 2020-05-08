@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/css/table.css">
+</head>
+<body>
+<center>Welcome!</center>
+
+<table class="table_type">
+
+    <tr><th>商品ID</th><th>商品名字</th><th>商品价格</th><th>商品url</th><th>图片url</th></tr>
+
+     <tr th:each="o:${goodsList}" >
+        <td  th:text="${o.goodsId}"></td>
+        <td  th:text="${o.goodsName}"></td>
+        <td  th:text="${o.price}"></td>
+        <td  th:text="${o.goodsIp}"th:style="'color:'+'#FF4040'" class="stat"></td>
+        <td  th:text="${o.img}"th:style="'color:'+'#8EE5EE'"  class="stat"></td>
+    </tr>
+</table>
+</body>
+</html>

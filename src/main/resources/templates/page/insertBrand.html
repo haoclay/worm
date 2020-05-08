@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/type_list_obj.js"></script>
+</head>
+<body>
+<button class="updateBtn">update</button>
+
+</body>
+</html>
+
+<script>
+    $(function () {
+
+        $('.updateBtn').bind('click',function () {
+            var brand_list=getTypeList();
+            var arr_list=new Array();
+            for(var i= 0;i<brand_list.length;i++){
+                var arr=brand_list[i];
+                for(var j=0;j<arr.length;j++){
+                    var pojo=arr[j];
+                    arr_list.push(pojo);
+
+                }
+            }
+
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },// header一定要加，否则会报415错误
+                url:'/insertBrand.do',
+                type:'post',
+                dataType:'json',
+                data:JSON.stringify(arr_list),
+                success:function (data) {
+                    if(data.stat=='ok'){
+                        alert('成功插入'+data.stat_map.data_size+'条');
+                    }else if(data.stat=='error'){
+                        alert('插入失败');
+                    }
+                }
+            })
+        })
+
+    })
+</script>
