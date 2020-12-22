@@ -5,4 +5,7 @@ package com.sgq.controller;
  * Date : 2020/12/22 20:41
  */
 public class MyController {
+    public static void main(String[] args) {
+
+    }
 }
