@@ -82,6 +82,7 @@ public class MessageSendController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(" test worm");
           return flag;
     }
     @RequestMapping("/f1.do")
